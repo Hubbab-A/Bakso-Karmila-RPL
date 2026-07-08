@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Kasir')
-@section('page-title', '🧾 Kasir / Point of Sale')
+@section('page-title', 'Kasir / Point of Sale')
 
 @section('content')
 <div x-data="posSystem()" class="flex gap-4 h-[calc(100vh-140px)]">
@@ -38,8 +38,16 @@
                 "
                     @click="tambahItem({{ $menu->id }}, '{{ addslashes($menu->nama) }}', {{ $menu->harga_jual }})"
                     class="bg-white rounded-xl shadow-sm p-4 cursor-pointer hover:shadow-md hover:border-blue-400 border-2 border-transparent transition-all active:scale-95">
-                    <div class="w-full h-24 bg-gradient-to-br from-orange-100 to-blue-50 rounded-lg mb-3 flex items-center justify-center text-3xl">
-                        {{ in_array(strtolower($kategori), ['minuman']) ? '🥤' : '🍜' }}
+                    <div class="w-full h-24 rounded-lg mb-3 overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                        @if($menu->foto)
+                            <img src="{{ asset('storage/' . $menu->foto) }}"
+                                alt="{{ $menu->nama }}"
+                                class="w-full h-full object-cover">
+                        @else
+                            <span class="text-3xl">
+                                {{ str_contains(strtolower($kategori), 'minum') ? '🥤' : '🍜' }}
+                            </span>
+                        @endif
                     </div>
                     <h3 class="font-semibold text-gray-800 text-sm leading-tight">{{ $menu->nama }}</h3>
                     <p class="text-blue-600 font-bold text-sm mt-1">Rp {{ number_format($menu->harga_jual, 0, ',', '.') }}</p>
@@ -107,13 +115,13 @@
             <div class="grid grid-cols-3 gap-1.5">
                 <button @click="metodeBayar = 'tunai'"
                     :class="metodeBayar === 'tunai' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'"
-                    class="py-2 rounded-lg text-xs font-medium transition">💵 Tunai</button>
+                    class="py-2 rounded-lg text-xs font-medium transition">Tunai</button>
                 <button @click="metodeBayar = 'transfer'"
                     :class="metodeBayar === 'transfer' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'"
-                    class="py-2 rounded-lg text-xs font-medium transition">🏦 Transfer</button>
+                    class="py-2 rounded-lg text-xs font-medium transition">Transfer</button>
                 <button @click="metodeBayar = 'qris'"
                     :class="metodeBayar === 'qris' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'"
-                    class="py-2 rounded-lg text-xs font-medium transition">📱 QRIS</button>
+                    class="py-2 rounded-lg text-xs font-medium transition">QRIS</button>
             </div>
 
             {{-- Bayar --}}

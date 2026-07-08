@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Laporan Penjualan')
-@section('page-title', '📊 Laporan Penjualan')
+@section('page-title', 'Laporan Penjualan')
 
 @section('content')
 <div class="space-y-6">
@@ -53,7 +53,7 @@
     <div class="grid grid-cols-2 gap-5">
         {{-- Grafik Harian --}}
         <div class="bg-white rounded-xl shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 mb-4">📈 Omzet Harian</h3>
+            <h3 class="font-bold text-gray-800 mb-4">Omzet Harian</h3>
             @if($harian->count() > 0)
             <div class="relative h-40">
                 @php
@@ -64,10 +64,10 @@
                     @php $pct = ($h->omzet / $maxOmzet) * 100; @endphp
                     <div class="flex-1 flex flex-col items-center gap-1 group relative">
                         <div class="w-full bg-blue-500 hover:bg-blue-600 rounded-t transition cursor-pointer"
-                             style="height: {{ max(4, $pct) }}%"
-                             title="{{ $h->tgl }}: Rp {{ number_format($h->omzet, 0, ',', '.') }}"></div>
+                            style="height: {{ max(4, $pct) }}%"
+                            title="{{ $h->tgl }}: Rp {{ number_format($h->omzet, 0, ',', '.') }}"></div>
                         <span class="text-xs text-gray-400 rotate-45 origin-left mt-1"
-                              style="font-size:9px">{{ \Carbon\Carbon::parse($h->tgl)->format('d') }}</span>
+                            style="font-size:9px">{{ \Carbon\Carbon::parse($h->tgl)->format('d') }}</span>
                     </div>
                     @endforeach
                 </div>
@@ -79,21 +79,21 @@
 
         {{-- Menu Terlaris --}}
         <div class="bg-white rounded-xl shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 mb-4">🏆 Menu Terlaris</h3>
+            <h3 class="font-bold text-gray-800 mb-4">Menu Terlaris</h3>
             <div class="space-y-3">
                 @forelse($perMenu->take(8) as $i => $m)
                 @php $pct = $perMenu->first()->total_qty > 0 ? ($m->total_qty / $perMenu->first()->total_qty) * 100 : 0; @endphp
                 <div>
                     <div class="flex justify-between text-sm mb-1">
                         <span class="text-gray-700">
-                            @if($i === 0) 🥇 @elseif($i === 1) 🥈 @elseif($i === 2) 🥉 @else {{ $i+1 }}. @endif
+                            @if($i === 0) @elseif($i === 1) @elseif($i === 2) @else {{ $i+1 }}. @endif
                             {{ $m->nama_menu }}
                         </span>
                         <span class="text-gray-500">{{ $m->total_qty }} porsi</span>
                     </div>
                     <div class="h-2 bg-gray-100 rounded-full">
                         <div class="h-2 bg-gradient-to-r from-blue-500 to-orange-400 rounded-full transition-all"
-                             style="width: {{ $pct }}%"></div>
+                            style="width: {{ $pct }}%"></div>
                     </div>
                 </div>
                 @empty
@@ -106,7 +106,7 @@
     {{-- Tabel Rekap Harian --}}
     <div class="bg-white rounded-xl shadow-sm">
         <div class="p-5 border-b flex justify-between items-center">
-            <h3 class="font-bold text-gray-800">📅 Rincian Harian</h3>
+            <h3 class="font-bold text-gray-800">Rincian Harian</h3>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
@@ -130,7 +130,7 @@
                         <td class="text-right px-5 py-3.5 font-bold text-gray-800">Rp {{ number_format($h->omzet, 0, ',', '.') }}</td>
                         <td class="text-center px-4 py-3.5">
                             <a href="{{ route('laporan.detail', ['tanggal' => $h->tgl]) }}"
-                               class="text-xs text-blue-500 hover:text-blue-700 font-medium">
+                                class="text-xs text-blue-500 hover:text-blue-700 font-medium">
                                 Lihat Detail →
                             </a>
                         </td>

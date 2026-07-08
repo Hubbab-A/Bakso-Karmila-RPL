@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Kalkulator HPP')
-@section('page-title', '🧮 Kalkulator HPP — Full Costing')
+@section('page-title', 'Kalkulator HPP — Full Costing')
 
 @section('content')
 <div x-data="{ modalOverhead: false, modalTK: false }" class="space-y-6">
@@ -67,7 +67,7 @@
         {{-- Biaya Tenaga Kerja --}}
         <div class="bg-white rounded-xl shadow-sm p-5">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-gray-800">👷 Tenaga Kerja</h3>
+                <h3 class="font-bold text-gray-800">Tenaga Kerja</h3>
                 <button @click="modalTK = true" class="text-xs bg-blue-50 text-blue-600 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition">+ Tambah</button>
             </div>
             <div class="space-y-2">
@@ -92,7 +92,7 @@
 
         {{-- Estimasi Porsi --}}
         <div class="bg-white rounded-xl shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 mb-4">📊 Estimasi Porsi</h3>
+            <h3 class="font-bold text-gray-800 mb-4">Estimasi Porsi</h3>
             <form method="POST" action="{{ route('hpp.estimasi') }}" class="space-y-4">
                 @csrf
                 <div>
@@ -121,7 +121,7 @@
     {{-- Tabel HPP per Menu --}}
     <div class="bg-white rounded-xl shadow-sm">
         <div class="p-5 border-b">
-            <h3 class="font-bold text-gray-800">📋 HPP per Menu (Full Costing)</h3>
+            <h3 class="font-bold text-gray-800">HPP per Menu (Full Costing)</h3>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-sm">

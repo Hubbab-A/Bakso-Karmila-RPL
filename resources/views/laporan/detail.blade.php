@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Detail Transaksi')
-@section('page-title', '📋 Detail Transaksi Harian')
+@section('page-title', 'Detail Transaksi Harian')
 
 @section('content')
 <div class="space-y-4">
@@ -48,7 +48,7 @@
         <div class="border-b last:border-0 p-5 hover:bg-gray-50 transition">
             <div class="flex items-start justify-between">
                 <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-lg mt-0.5">🧾</div>
+                    <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-lg mt-0.5"></div>
                     <div>
                         <div class="flex items-center gap-2">
                             <p class="font-bold text-gray-800">{{ $t->no_nota }}</p>
@@ -68,7 +68,7 @@
                             @endforeach
                         </div>
                         @if($t->catatan)
-                        <p class="text-xs text-gray-400 mt-1 italic">📝 {{ $t->catatan }}</p>
+                        <p class="text-xs text-gray-400 mt-1 italic">{{ $t->catatan }}</p>
                         @endif
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     <p class="text-xs text-green-600 mt-0.5">Laba: Rp {{ number_format($t->total_laba, 0, ',', '.') }}</p>
                     <div class="flex gap-2 mt-2 justify-end">
                         <a href="{{ route('laporan.nota', $t->id) }}" target="_blank"
-                           class="text-xs text-blue-500 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg flex items-center gap-1">
+                            class="text-xs text-blue-500 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg flex items-center gap-1">
                             <i class="fas fa-print"></i> Cetak Ulang
                         </a>
                     </div>

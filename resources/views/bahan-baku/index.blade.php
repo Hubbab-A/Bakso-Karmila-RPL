@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Bahan Baku')
-@section('page-title', '📦 Master Bahan Baku')
+@section('page-title', 'Master Bahan Baku')
 
 @section('content')
 <div x-data="{ modalTambah: false }" class="space-y-4">
